@@ -38,24 +38,24 @@ export default function DegradationTimer({ timestamp }) {
   };
 
   return (
-    <div className="bg-bg-tertiary/90 backdrop-blur-sm px-4 py-3 rounded-lg border border-status-notPreserved/30 animate-fade-in">
-      <div className="flex items-center gap-4">
-        <div className="flex items-center gap-2">
-          <AlertTriangle className="w-5 h-5 text-status-notPreserved" />
-          <span className="text-sm font-medium text-status-notPreserved">
+    <div className="bg-bg-tertiary/90 backdrop-blur-sm px-3 lg:px-4 py-2 lg:py-3 rounded-lg border border-status-notPreserved/30 animate-fade-in">
+      <div className="flex items-center gap-2 lg:gap-4">
+        <div className="flex items-center gap-1.5 lg:gap-2">
+          <AlertTriangle className="w-4 h-4 lg:w-5 lg:h-5 text-status-notPreserved" />
+          <span className="text-xs lg:text-sm font-medium text-status-notPreserved hidden sm:inline">
             72 HORAS DEPOIS...
           </span>
         </div>
 
-        <div className="flex items-center gap-3">
-          <Timer className={`w-5 h-5 ${getTimestampColor()}`} />
-          <span className={`text-xl font-mono font-bold ${getTimestampColor()}`}>
+        <div className="flex items-center gap-1.5 lg:gap-3">
+          <Timer className={`w-4 h-4 lg:w-5 lg:h-5 ${getTimestampColor()}`} />
+          <span className={`text-base lg:text-xl font-mono font-bold ${getTimestampColor()}`}>
             {timestamp}
           </span>
         </div>
 
         {/* Progress bar */}
-        <div className="w-32 h-2 bg-bg-primary rounded-full overflow-hidden">
+        <div className="w-16 lg:w-32 h-1.5 lg:h-2 bg-bg-primary rounded-full overflow-hidden">
           <div
             className="h-full bg-gradient-to-r from-status-preserved via-status-volatile to-status-notPreserved transition-all duration-500"
             style={{ width: `${getProgress()}%` }}

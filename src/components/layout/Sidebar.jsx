@@ -6,14 +6,14 @@ import TransformInfo from '../sidebar/TransformInfo';
 import StepNarrative from '../sidebar/StepNarrative';
 import PresenterControls from '../sidebar/PresenterControls';
 
-export default function Sidebar() {
+export default function Sidebar({ onClose }) {
   const { currentStepData } = useInvestigation();
 
   return (
-    <aside className="w-80 flex-shrink-0 bg-bg-secondary border-r border-white/10 flex flex-col overflow-hidden">
+    <aside className="w-80 max-w-full flex-shrink-0 bg-bg-secondary border-r border-white/10 flex flex-col overflow-hidden h-full">
       {/* Step List */}
       <div className="flex-shrink-0 border-b border-white/10">
-        <StepList />
+        <StepList onStepClick={onClose} />
       </div>
 
       {/* Scrollable content */}

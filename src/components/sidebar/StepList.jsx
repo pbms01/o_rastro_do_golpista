@@ -24,12 +24,19 @@ const iconMap = {
   Timer,
 };
 
-export default function StepList() {
+export default function StepList({ onStepClick }) {
   const { state, steps, goToStep } = useInvestigation();
 
+  const handleClick = (stepId, isVisited) => {
+    if (isVisited) {
+      goToStep(stepId);
+      if (onStepClick) onStepClick();
+    }
+  };
+
   return (
-    <div className="p-4">
-      <h2 className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-3">
+    <div className="p-3 lg:p-4">
+      <h2 className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-2 lg:mb-3">
         Etapas da Investigação
       </h2>
       <nav className="space-y-1">
@@ -42,7 +49,7 @@ export default function StepList() {
           return (
             <button
               key={step.id}
-              onClick={() => isVisited && goToStep(step.id)}
+              onClick={() => handleClick(step.id, isVisited)}
               disabled={isFuture}
               className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-left transition-all ${
                 isCurrent
